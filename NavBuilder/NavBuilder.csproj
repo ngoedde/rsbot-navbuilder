@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BE2F57F1-203D-413F-B0D4-BBA2F47C1D94}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>NavBuilder</RootNamespace>
+    <AssemblyName>RSBot NavBuilder</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Build\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>shark.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="RoadShark.Pk2">
+      <HintPath>Dependencies\RoadShark.Pk2.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX">
+      <HintPath>Dependencies\SharpDX.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Client\DDSImage.cs" />
+    <Compile Include="Client\Pk2Controller.cs" />
+    <Compile Include="Core\BinaryReaderExtensions.cs" />
+    <Compile Include="Core\ByteExtensions.cs" />
+    <Compile Include="Core\Collision\CollisionDetector.cs" />
+    <Compile Include="Core\Collision\LineIntersection.cs" />
+    <Compile Include="Core\Config.cs" />
+    <Compile Include="Core\FileEvents.cs" />
+    <Compile Include="Core\Export\CollisionExporter.cs" />
+    <Compile Include="Core\Export\CollisionLoader.cs" />
+    <Compile Include="Core\GraphicsUtilities\Line.cs" />
+    <Compile Include="Core\Map\MapInfoManager.cs" />
+    <Compile Include="Core\Map\Region.cs" />
+    <Compile Include="Core\Mesh\MeshManager.cs" />
+    <Compile Include="Core\Mesh\MeshLine.cs" />
+    <Compile Include="Core\Mesh\MeshObject.cs" />
+    <Compile Include="Core\Mesh\MeshPoint.cs" />
+    <Compile Include="Core\Mesh\Resource.cs" />
+    <Compile Include="Core\Mesh\ResourceType.cs" />
+    <Compile Include="Core\Navmesh\Struct\NavCell.cs" />
+    <Compile Include="Core\Mesh\ObjectIndexManager.cs" />
+    <Compile Include="Core\Mesh\ResourceManager.cs" />
+    <Compile Include="Core\Navmesh\Struct\INavData.cs" />
+    <Compile Include="Core\Navmesh\IO\NavMeshReader.cs" />
+    <Compile Include="Core\Navmesh\IO\Unmanaged.cs" />
+    <Compile Include="Core\Navmesh\Struct\NavCellQuad.cs" />
+    <Compile Include="Core\Navmesh\Struct\NavCellTri.cs" />
+    <Compile Include="Core\Navmesh\Struct\NavEdge.cs" />
+    <Compile Include="Core\Navmesh\Struct\NavEdgeDirection.cs" />
+    <Compile Include="Core\Navmesh\Struct\NavEdgeFlag.cs" />
+    <Compile Include="Core\Navmesh\Struct\NavEdgeGlobal.cs" />
+    <Compile Include="Core\Navmesh\Struct\NavEdgeInternal.cs" />
+    <Compile Include="Core\Navmesh\Struct\NavFlag.cs" />
+    <Compile Include="Core\Navmesh\Struct\NavMesh.cs" />
+    <Compile Include="Core\Navmesh\Struct\NavMeshInst.cs" />
+    <Compile Include="Core\Navmesh\Struct\NavMeshInstMount.cs" />
+    <Compile Include="Core\Navmesh\Struct\NavMeshInstType.cs" />
+    <Compile Include="Core\Navmesh\NavMeshManager.cs" />
+    <Compile Include="Core\Navmesh\Struct\NavMeshTerrain.cs" />
+    <Compile Include="Core\Navmesh\Struct\NavVertex.cs" />
+    <Compile Include="Core\Pk2Extensions.cs" />
+    <Compile Include="Core\Project.cs" />
+    <Compile Include="ExportWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportWindow.Designer.cs">
+      <DependentUpon>ExportWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Globals.cs" />
+    <Compile Include="NewProjectWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewProjectWindow.Designer.cs">
+      <DependentUpon>NewProjectWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewRegionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewRegionForm.Designer.cs">
+      <DependentUpon>NewRegionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ListView.cs" />
+    <Compile Include="UI\MapCanvas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MapCanvas.Designer.cs">
+      <DependentUpon>MapCanvas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\NativeMethods.cs" />
+    <Compile Include="UI\PathBrowser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\PathBrowser.Designer.cs">
+      <DependentUpon>PathBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SharpDXExtensions.cs" />
+    <Compile Include="Window.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window.Designer.cs">
+      <DependentUpon>Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ExportWindow.resx">
+      <DependentUpon>ExportWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewProjectWindow.resx">
+      <DependentUpon>NewProjectWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewRegionForm.resx">
+      <DependentUpon>NewRegionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MapCanvas.resx">
+      <DependentUpon>MapCanvas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PathBrowser.resx">
+      <DependentUpon>PathBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window.resx">
+      <DependentUpon>Window.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="navigation.ico" />
+    <None Include="Resources\shark.png" />
+    <None Include="Resources\logo2.png" />
+    <Content Include="shark.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
